@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<aastaajad>
+	<aastaaeg>
+		<aastaajanimi>Talv</aastaajanimi>
+		<v2rvus>Hall</v2rvus>
+	</aastaaeg>
+	<aastaaeg>
+		<aastaajanimi>Kevad</aastaajanimi>
+		<v2rvus>Roheline</v2rvus>
+	</aastaaeg>
+	<aastaaeg>
+		<aastaajanimi>Suvi</aastaajanimi>
+		<v2rvus>Kollane</v2rvus>
+	</aastaaeg>
+	<aastaaeg>
+		<aastaajanimi>Sygis</aastaajanimi>
+		<v2rvus>Punane</v2rvus>
+	</aastaaeg>
+</aastaajad>

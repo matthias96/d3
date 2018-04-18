@@ -1,0 +1,22 @@
+<html>
+<head>
+    <style>
+        #container {                    /* defineerime konteineri */
+            height: 200px;
+            width: 200px;
+            background-color:blue;
+
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    d3.select("#container")
+      .transition()                                 
+      .duration(10000)                              // aja lisamine
+      .style("background-color", "black");              
+</script>
+</body>
+</html>

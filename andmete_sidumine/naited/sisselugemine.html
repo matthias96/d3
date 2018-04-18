@@ -1,0 +1,27 @@
+<html>
+<body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        d3.csv("andmed.csv").then(function(data){
+            console.log(data);
+        });
+
+        d3.json("eestifilmid.json").then(function(data){
+            console.log(data);
+        });
+        
+        d3.tsv("https://raw.githubusercontent.com/pilehvar/ADW/master/resources/datasets/dataset.tsv").then(function(data){
+            console.log(data);
+        });
+
+        d3.xml("aastaajad.xml").then(function(data){
+            console.log(data);
+        })
+        d3.text("andmed.txt").then(function(data){
+            console.log(data);
+        });
+
+
+    </script>
+</body>
+</html>

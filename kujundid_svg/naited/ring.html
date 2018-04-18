@@ -1,0 +1,24 @@
+<html>
+<body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    
+         <script>
+            
+                var width = 400;    // svg suurus ja laius
+                var height = 400;
+            
+                
+                var svg = d3.select("body")     // svg elemendi loomine
+                        .append("svg")
+                        .attr("width", width)
+                        .attr("height", height)
+                        .style("border-style", "solid");
+                
+                svg.append("circle")              // circle elemendi lisamine
+                        .attr("cx", 150)  // ringi algus x-koordinaat (keskpunkt)
+                        .attr("cy", 200) // ringi algus y-koordinaat  (keskpunkt)
+                        .attr("r", 100)     // ringi raadius
+                        .attr("fill", "green");
+        </script>
+    </body>
+</html

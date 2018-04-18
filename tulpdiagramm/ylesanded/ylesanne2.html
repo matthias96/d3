@@ -1,0 +1,78 @@
+<html>
+<head>
+    <style>
+        .bar{                           /* tulpade värvused */
+            fill: red;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <svg width="1000" height="1000"></svg>    <!-- svg ala -->
+
+    <script>
+         
+        var margin = 300;                 // margin muutuja abil saame muuta svg ala suurust
+        var svg = d3.select("svg")
+        
+        var width = svg.attr("width") - margin;
+        var height = svg.attr("height") - margin;
+
+        var x_scale = d3.scaleBand().range([0, width]);  //scaleBand kasutatakse tulpade puhul
+        var y_scale = d3.scaleLinear().range([height, 0]); 
+
+        var g = svg.append("g")                                                     // graafi alustuskoht
+                   .attr("transform", "translate(" + 100 + "," +  100 + ")");
+
+        d3.csv("inimesed.csv").then(function(data){    // loeb andmed sisse, kui saada kätte siis tagastatakse error
+            
+
+            x_scale.domain(data.map(function(d){return d.nimi;})); // nimed skaaleeritakse
+            y_scale.domain([0, d3.max(data, function(d){return d.kaal})]); // kasvud skaaleeritakse
+
+            g.append("g")                                            // x-telje loomine
+             .attr("transform", "translate(0," + height + ")")       // x-telje asukoht lehel
+             .call(d3.axisBottom(x_scale))                           // x-telje joonistamine
+             .append("text")                                         // teksti loomine
+             .attr("y", height - 675)                                // teksti koordinaadid
+             .attr("x", width)
+             .attr("text-anchor", "end")
+             .attr("stroke", "black")
+             .text("Nimed")                                         // teksti nimetus
+            
+            g.append("g")                                           // y-telg
+             .call(d3.axisLeft(y_scale).tickFormat(function(d){     // funktsioon tagastab pikkused 10-liste vahedega
+                 return d;
+             })
+             .ticks(10))
+             .append("text")
+             .attr("transform", "rotate(-90)")
+             .attr("y", 6)
+             .attr("dy", "-5.1em")
+             .attr("text-anchor", "end")
+             .attr("stroke", "black")
+             .text("Kaalud");
+             
+             g.selectAll(".bar")                // tulpade joonistamine
+              .data(data)                       // andmete sisestamine 
+              .enter().append("rect")           
+              .attr("class", "bar")
+              .on("click", changeOpacity)
+              .attr("x", function(d){ return x_scale(d.nimi);}) // x-koordinaat vastavalt skaleeritud nime väärtusele
+              .attr("y", function(d){ return y_scale(d.kaal);}) // y- koordinaat vastavalt skaleeritud kasvu väärtusele
+              .attr("width", x_scale.bandwidth() - 15)  // tulba laius
+              .transition()
+              .duration(2000)
+              .attr("height", function(d){return height - y_scale(d.kaal);})
+
+
+        })
+
+        function changeOpacity(d, i){
+            d3.select(this).attr("fill-opacity", "0.8");
+        }
+  
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<html>
+<head>
+    <style>
+        .esimene {
+            height: 100px;                       
+            width: 100px;
+            background-color:aqua;
+            margin:5px;
+        }
+        .teine{
+            height: 100px;                       
+            width: 100px;
+            background-color:red;
+            margin:5px;
+        }
+        .kolmas{
+            height: 100px;                       
+            width: 100px;
+            background-color:green;
+            margin:5px;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<div class="esimene"> </div> 
+<div class="teine"> </div> 
+<div class="kolmas"> </div>   
+<script>
+    
+
+   var esimene = d3.select(".esimene")     
+                    .on("mouseover", function(){   
+                        d3.select(".teine").remove();
+                        d3.select(".kolmas").remove();
+                            
+                    })
+                    .on("mouseout", function(){
+                        d3.select("body").append("div").attr("class", "teine");
+                        d3.select("body").append("div").attr("class", "kolmas");
+                    });
+                    
+
+    var teine = d3.select(".teine")     
+                    .on("mouseover", function(){   
+                        d3.select(".esimene").remove();
+                        d3.select(".kolmas").remove();
+                            
+                    })
+                    .on("mouseout", function(){
+                        d3.select("body").append("div").attr("class", "esimene");
+                        d3.select("body").append("div").attr("class", "kolmas");
+                    });
+
+    var kolmas = d3.select(".kolmas")     
+                    .on("mouseover", function(){   
+                        d3.select(".esimene").remove();
+                        d3.select(".teine").remove();
+                                    
+                    })
+                    .on("mouseout", function(){
+                        d3.select("body").append("div").attr("class", "esimene");
+                        d3.select("body").append("div").attr("class", "teine");
+                    });
+                            
+    
+      
+</script>
+</body>
+</html>

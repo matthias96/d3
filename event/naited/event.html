@@ -1,0 +1,29 @@
+<html>
+<head>
+    <style>
+        div {
+            height: 100px;                       
+            width: 100px;
+            background-color: steelblue;
+            margin:5px;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<div> </div>    <!-- element millele lisame evendi -->
+<script>
+    d3.selectAll("div")     // valime kõik divid
+      .on("mouseover", function(){   // funktsioon mis käivitub kui hiir on antud elemendi peal
+          d3.select(this)
+            .style("background-color", "orange");
+          console.log(d3.event);              // tagastab evendi info konsoolis
+          console.log(d3.mouse(this));	  // hiire koordinaadid	konsoolis		
+      })
+      .on("mouseout", function(){      // funktsioon mis käivitub kui hiirt pole peal
+          d3.select(this)
+            .style("background-color", "steelblue")
+      });
+</script>
+</body>
+</html>

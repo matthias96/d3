@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+<body>
+
+    <div>
+        <p class="maksimum"></p>
+        <p class="miinimum"></p>
+
+        <p class="mediaan"></p>
+        
+        
+        
+    </div>
+    <script>
+       
+       var array = [2,78,45,35];
+
+       var max = d3.max(array);
+       var min = d3.min(array);
+       var mediaan = d3.median(array);
+
+       var maxselection = d3.select(".maksimum").text(max);
+       var minselection = d3.select(".miinimum").text(min);
+       var medianselection = d3.select(".mediaan").text(mediaan);
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+    <style>
+        #container1 {                    /* defineerime konteineri */
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+
+        }
+        #container2 {                    /* defineerime konteineri */
+            height: 200px;
+            width: 200px;
+            background-color: red;
+
+        }
+        #container3 {                    /* defineerime konteineri */
+            height: 200px;
+            width: 200px;
+            background-color: green;
+
+        }
+     
+       
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<div id="container1"></div>
+<div id="container2"></div>
+<div id="container3"></div>
+
+<script>
+
+   d3.select("#container1").transition().duration(10000).style("background-color", "black");
+   d3.select("#container1").transition().delay(15000).style("background-color", "blue");
+
+   d3.select("#container2").transition().delay(4000).style("width", "300px");
+   d3.select("#container2").transition().delay(4000).style("height", "300px");
+
+   d3.select("#container2").transition().delay(8000).style("width", "400px");
+   d3.select("#container2").transition().delay(8000).style("height", "400px");
+
+   
+   d3.select("#container3").transition().delay(4000).style("width", "150px");
+   d3.select("#container3").transition().delay(4000).style("height", "150px");
+
+   d3.select("#container3").transition().delay(8000).style("width", "100px");
+   d3.select("#container3").transition().delay(8000).style("height", "100px");
+
+   
+             
+</script>
+</body>
+</html>

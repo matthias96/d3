@@ -1,0 +1,19 @@
+<body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <p></p>          <!--- massiivis on ainult 2 numbrit kuid paragrahve on 3 -->
+    <p></p>
+    <p>SEDA TEKSTI EI KUVATA</p>  <!-- paragrahv mis eemaldatakse -->
+    <script>
+    
+    var myData = [1, 2];
+
+    var p = d3.select("body")
+                .selectAll("p")
+                .data(myData)
+                .text(function (d, i) {
+                    return d;
+                })
+                .exit() /* viimane paragrahv pannakse exit valikusse (selection) */
+                .remove();      /* exit valikus olev paragrahv eemaldatakse */
+    </script>
+</body>

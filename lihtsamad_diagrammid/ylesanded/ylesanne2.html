@@ -1,0 +1,76 @@
+<html>
+        <head>
+
+            <script src="https://d3js.org/d3.v5.min.js"></script>
+        </head>
+
+<body>
+<div></div>
+<button onclick = Double()>Suurenda</button>
+<script>
+        var width = 500;  // svg laius
+        var height = 500;   // svg pikkus
+        var data = [10, 15, 20, 25, 30]; // andmed
+        var colors = ['#ffffcc','#c2e699','#78c679','#31a354','#006837'];
+         // ringide värvid, iga väärtuse kohta oma värv
+        function Joonista(){
+            var svg = d3.select("body").select("div")                // svg loomine
+                        .append("svg")
+                        .attr("width", width)
+                        .attr("height", height);
+            var g = svg.selectAll("g")                      // andmete külge panemine
+                        .data(data)
+                        .enter()
+                        .append("g")
+                        .attr("transform", function(d, i) {
+                            return "translate(0,0)";            // alguskoht
+                        })
+    
+        g.append("circle")                          /*ringi joonistamine   */
+        .attr("cy", function(d, i) {                    
+            return i*100 + 50;                      // ringi x koordinaadi määramine vastvalt ta väärtusele
+        })
+        .attr("cx", function(d, i) {
+            return 100;                             // ringi y-koordinaat
+        })
+        .attr("r", function(d) {
+            return d*1.5;                          // ringi raadius määramine vastavalt ta väärtusele
+        })
+        .attr("fill", function(d, i){
+            return colors[i];                      // ringi värvus
+        })
+    
+        g.append("text")                        // teksti lisamine koos tema atribuutidega
+        .attr("y", function(d, i) {
+            return i * 100+55;
+        })
+        .attr("x", 95)
+        .attr("stroke", "teal")
+        .attr("font-size", "12px")
+        .attr("font-family", "sans-serif")
+        .text(function(d) {
+            return d;
+        });
+
+        
+
+        }
+        
+        Joonista();
+        
+        function Double(){
+            console.log("olen siin")
+            d3.select("svg").remove();
+            data = data.map( x => x *2);
+            height*=2;
+            width*= 2;
+            console.log(data)
+            Joonista();
+        }
+
+        
+
+
+    </script>
+</body>
+</html>

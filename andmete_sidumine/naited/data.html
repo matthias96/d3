@@ -1,0 +1,16 @@
+<body>
+   
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+        <p></p>            <!-- 4 paragrahvi kuna minu andmetes on 4 arvu -->
+        <p></p>
+        <p></p>
+        <p></p>
+    <script>
+        var minuandmed = [10, 20, 30 , 40]    // andmed
+    
+        var tulemus = d3.select("body").selectAll("p").data(minuandmed).text(function (d, i){   
+            return d;	// funktsioon, mis tagastab andmed
+        });
+    </script>
+    </body>
+    

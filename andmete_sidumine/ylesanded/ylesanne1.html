@@ -1,0 +1,22 @@
+<html>
+<body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+      
+        d3.json("eestifilmid.json").then(function(data){
+            d3.select("body")
+              .selectAll("p")
+              .data(data)
+              .enter()
+              .append("p")
+              .text(function(d){
+                 return d.nimi + ", " +  d.aasta;
+              });
+        });
+        
+      
+
+
+    </script>
+</body>
+</html>

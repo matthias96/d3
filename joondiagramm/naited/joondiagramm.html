@@ -1,0 +1,73 @@
+<html>
+    <head>
+            <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+
+    <style>
+        .line{
+            fill: none;
+            stroke-width: 3px;
+            stroke:red;
+        }
+    </style>
+    <body>
+
+        <script>
+
+            var margin = {top:20, right: 20, bottom: 30, left:50} // äärised
+
+            var width = 1000 - margin.left - margin.right; // laiuse muutuja
+            var height = 1000 - margin.top - margin.bottom; // pikkuse muutuja
+
+            var svg = d3.select("body").append("svg")         // svg ala joonistamine
+                        .attr("width", width + margin.left + margin.right)  // svg ala laius
+                        .attr("height", height + margin.top + margin.bottom) // svg ala pikkus
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")") // joonise alustuskoht
+            
+            var parseTime = d3.timeParse("%d-%b-%y"); // kuupäevade vorming (%d-päev, %b-kuu, %y-aasta)
+            
+            var x = d3.scaleTime().range([0, width]); // x-telje skaleerimine
+            var y = d3.scaleLinear().range([height, 0]); // y-telje skaleerimine
+
+
+            var valueline = d3.line()    // joone muutuja
+                              .x(function(d) {return x(d.date);}) // x-koordinaat sõltub kuupäevast
+                              .y(function(d) {return y(d.price);})  // y-koordinaat sõltub hinnast
+                              
+            d3.json("bitcoin.json").then(function(data){   // andmete sisse lugemine
+                
+                data.forEach(function(d){     // iga andme vormistamine
+                    d.date = parseTime(d.date);
+                    d.price = +d.price;
+                });
+
+                x.domain(d3.extent(data, function(d){return d.date})); // skaleerimine x-teljel
+                y.domain([5000 , d3.max(data, function(d){return d.price})]); // skaleerimine y-teljel
+                
+
+                svg.append("path")    // joone joonistamine
+                   .data([data])
+                   .attr("class", "line")
+                   .attr("d", valueline)
+                   
+
+                svg.append("g")          // x-telg
+                    .attr("transform", "translate(0," + height  + ")")  
+                    .call(d3.axisBottom(x));
+
+                svg.append("g")    // y-telg
+                    .call(d3.axisLeft(y)); 
+
+                svg.append("text")    // teksti lisamine
+                    .attr("x", width/2)
+                    .attr("y", height/2)
+                    .style("fill", "grey")
+                    .text("BITCOIN GRAPH")
+                    .style("font-size", "40px")
+
+            });         
+
+        </script>
+    </body>
+</html>

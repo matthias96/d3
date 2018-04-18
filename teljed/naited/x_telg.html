@@ -1,0 +1,29 @@
+<html>
+<head>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<script>
+    var width = 400,  // svg laius
+    height = 100;     // svg pikkus
+    var data = [0, 10, 15, 20, 25, 50, 100]; // andmed
+
+    var svg = d3.select("body")             // svg külge panemine
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+    var scale = d3.scaleLinear()      // Skaleerimine et telg svg alasse mahuks
+            .domain([d3.min(data), d3.max(data)])
+            .range([0, width - 100]);
+
+    var x_axis = d3.axisBottom()     // x-telje loomine ja selle skaleerimine
+            .scale(scale);
+
+    svg.append("g")                 // x-telje kuvamine
+    .call(x_axis);
+    
+
+</script>
+</body>
+</html>

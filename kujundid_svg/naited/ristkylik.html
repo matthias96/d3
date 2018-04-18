@@ -1,0 +1,26 @@
+<html>
+<body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    
+         <script>
+            
+                var width = 400;    // svg suurus ja laius
+                var height = 400;
+            
+                
+                var svg = d3.select("body")     // svg elemendi loomine
+                        .append("svg")
+                        .attr("width", width)
+                        .attr("height", height)
+                        .style("border-style", "solid");
+				// kood jätkub
+                
+                svg.append("rect")              // rect elemendi lisamine
+                        .attr("x", 50)           // ristküliku algus x-koordinaat
+                        .attr("y", 50)           // ristküliku algus y-koordinaat
+                        .attr("width", 100)     // ristküliku laius
+                        .attr("height", 150)    // ristküliku pikkus
+                        .attr("fill", "blue");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+      
+    
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <svg width="500" height="400"></svg>
+    <script>
+
+        var svg = d3.select("svg")  // valime svg ala
+
+        var width = svg.attr("width");  // svg laius muutujas
+        var height = svg.attr("height"); // svg pikkus muutujas
+        var radius = Math.min(width,height) / 2; // kuna tegemist on sektordiagrammiga on meil vaja ka raadiust
+
+        
+
+        var g = svg.append("g")      // graafi alustuskoht
+                    .attr("transform", "translate(" + width / 2 + "," + height / 2 +")");
+        
+        var color = d3.scaleOrdinal(['#4daf4a','#377eb8','#ff7f00','#984ea3','#e41a1c']); // iga inimese jaoks erivärv, et saaks eristada
+
+        var pie = d3.pie().value(function(d) { 
+                return d.kasv;                  // genereerime kaarte pikkused vastavalt andmetele
+        });
+
+        var path = d3.arc()                     // kaarte joonistamine
+                    .outerRadius(radius-10)     // kaare välimine raadius
+                    .innerRadius(100);            // kaare siseraadius
+
+         var label = d3.arc()                   // nimede asukoht kaarel
+                      .outerRadius(radius)
+                      .innerRadius(radius - 100);
+
+        d3.csv("inimesed.csv").then(function(data) {  // andmete kätte saamine
+         
+            var arc = g.selectAll(".arc")       // loome arc elemendi ja sisestame talle andmed
+                       .data(pie(data))
+                       .enter().append("g")
+                       .attr("class", "arc");  // rakendab arc classi kaart elementidele
+
+        arc.append("path")    // joonistame kaared
+            .attr("d", path)
+            .attr("fill", function(d) { return color(d.data.nimi); });  // kaarte värvid vastavalt nimedele
+
+
+        arc.append("text")            // teksti lisamine igale sektorile
+           .attr("transform", function(d) {
+               return "translate(" + label.centroid(d) + ")";  
+           })
+           .text(function(d){return d.data.nimi;}) // nimede lisamine
+
+        });
+
+        
+    </script>
+    
+</body>
+</html>

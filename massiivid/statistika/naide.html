@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+<body>
+    <script>
+        var array = [23,4,5,6]
+
+        var min=d3.min(array);  
+        console.log(min);  // tagastab massiivi vähima väärtus (stringide puhul esimese elemendi)
+
+        var max=d3.max(array); 
+        console.log(max); // tagastab massiivi suurima väärtuse (stringide puhul viimase elemendi)
+
+        var maxmin=d3.extent(array); 
+        console.log(maxmin);  // tagastab massiivina suurima ja vähima väärtuse
+ 
+        var summa=d3.sum(array);
+        console.log(summa); // tagastab massiivi väärtuste summa
+
+        var keskmine=d3.mean(array);
+        console.log(keskmine); // tagastab massiivi väärtuse keskmise
+
+        var mediaan=d3.median(array);
+        console.log(mediaan); // tagastab massiivi väärtuse mediaani
+
+        d3.quantile(array, 0);
+        d3.quantile(array, 0.5);
+        d3.quantile(array, 1);
+
+
+    </script>
+</body>
+</html>

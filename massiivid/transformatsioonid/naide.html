@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+<body>
+    <script>
+        var array = [23,4,5,6];
+        var array2= [10,12,45,69];
+
+        var cross = d3.cross(array, array2);
+        console.log(cross);                 // tagastab kõik võimalikud paarid antud massiivide vahel
+
+        var kokku = d3.merge([array, array2]);
+        console.log(kokku);   // paneb mõlemad massiivid üheks
+
+        var paarid = d3.pairs(array);
+        console.log(paarid); // tagastab tulemuseks [23,4], [4,5], [5,6]
+
+        var suvaline = d3.shuffle(array);
+        console.log(suvaline);  // järjestab elemendid suvalisse järjekorda
+
+        
+
+
+
+
+
+
+    </script>
+</body>
+</html>

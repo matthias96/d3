@@ -1,0 +1,42 @@
+<html>
+<head>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<script>
+        var data = [5, 10, 12];  // Andmete defineerimine
+    
+        var height = 500,		// Svg laius
+            scaleFactor = 10,	// Andmete mahutamise muutuja 
+            barHeight = 30;		// tulba pikkus
+    
+        var graph = d3.select("body")		
+                      .append("svg")		// lisame body elemendile svg
+                      .attr("width", barHeight*data.length)	// svg laiuse attribuut
+                      .attr("height", height); // svg pikkus vastavalt andmete hulgale
+    
+        var bar = graph.selectAll("g")  //tulpade asukohtade loomine
+                      .data(data)
+                      .enter()
+                      .append("g")
+                      .attr("transform", function(d, i) {	
+                          return "translate(" + i * barHeight + "," +  "0)"
+                      });   
+    
+    
+        bar.append("rect")				// tulba joonistamine
+           .attr("height", function(d) {		// tulba laiuse arvutamine
+               return d * scaleFactor;
+           })
+           .attr("width", barHeight - 1)	// tulba pikkus
+           
+    
+        bar.append("text")			// teksti lisamine igale tulbale
+           .attr("y", function(d) { return d*scaleFactor+15;})
+           .attr("x", barHeight / 2)
+           .text(function(d) { return d; });
+    
+    </script>
+</body>
+</html>  

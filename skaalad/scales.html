@@ -1,0 +1,39 @@
+
+<html>
+<!-- näited võetud addressilt http://d3indepth.com/scales/ -->
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+    <script>
+        var myScale = d3.scaleLinear()  // funktsiooni defineerimine
+                        .domain([0, 10]) // väärtused, mis võtab vastu
+                        .range([0, 100]); // väärtuste vahemik, mis tagastatakse
+
+        console.log(myScale(3)); // tagastab väärtuse 30
+
+        var myScaleColors = d3.scaleLinear().domain([0, 10]).range(['yellow', 'red']); // skaala kasutamine värvide puhul
+
+        console.log(myScaleColors(0)) ;   // tagastab "rgb(255, 255, 0)"
+           
+        var timeScale = d3.scaleTime()                // kuupäevade skaaleerimine
+                          .domain([new Date(2016, 0, 1), new Date(2017, 0, 1)])
+                          .range([0, 700]);
+
+        console.log(timeScale(new Date(2016, 6, 1)));
+
+        
+        var myData = [0, 5, 7, 10, 20, 30, 35, 40, 60, 62, 65, 70, 80, 90, 100];  
+
+        var quantileScale = d3.scaleQuantile()       // iga myData andmele vastab range's olev väärtus
+        .domain(myData)      
+        .range(['lightblue', 'orange', 'lightgreen']);
+
+        quantileScale(0);   // tagastab 'lightblue'
+        quantileScale(20);  // tagastab 'lightblue'
+        quantileScale(30);  // tagastab 'orange'
+        quantileScale(65);  // tagastab 'lightgreen'
+
+
+    </script>
+</body>
+</html>

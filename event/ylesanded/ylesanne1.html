@@ -1,0 +1,25 @@
+<html>
+<head>
+    <style>
+        div {
+            height: 100px;                       
+            width: 100px;
+            background-color:aqua;
+            margin:5px;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<div> </div>   
+<script>
+    d3.selectAll("div")  
+      .on("mouseover", function(){   
+          d3.select("body")
+            .style("background-color", "blue");
+          	
+      })
+      
+</script>
+</body>
+</html>

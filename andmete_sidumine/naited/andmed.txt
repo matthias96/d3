@@ -1,0 +1,5 @@
+loom,vanus
+koer,12
+kass,5
+hiir,2
+elevant,15

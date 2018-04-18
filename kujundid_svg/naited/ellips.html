@@ -1,0 +1,25 @@
+<html>
+<body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    
+         <script>
+            
+                var width = 400;    // svg suurus ja laius
+                var height = 400;
+            
+                
+                var svg = d3.select("body")     // svg elemendi loomine
+                        .append("svg")
+                        .attr("width", width)
+                        .attr("height", height)
+                        .style("border-style", "solid");
+                
+                svg.append("ellipse")              // ellipsi elemendi lisamine
+                        .attr("cx", 150) // ellipsi algus x-koordinaat(keskpunkt)
+                        .attr("cy", 200)// ellipsi algus y-koordinaat (keskpunkt)
+                        .attr("rx", 100)     // ellipsi x raadius
+                        .attr("ry", 50)      // ellipsi y raadius
+                        .attr("fill", "yellow");
+        </script>
+    </body>
+</html>

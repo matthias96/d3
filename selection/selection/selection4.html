@@ -1,0 +1,23 @@
+<html>
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+   <div class="esimene">
+       <h1>tekst</h1>
+       <p>tekst</p>
+       <h1>tekst</h1>
+   </div>
+   <div class="teine">
+       <p>tekst</p>
+       <h2>tere</h2>
+   </div>
+</body>
+<script>
+var attribuut = d3.select(".teine").select("p").attr("nimi", "Madis")   //     attribuudi lisamine
+    var style = d3.select(".esimene").selectAll("h1").style("color", "red") // CSSi muutmine
+    var tekst = d3.select(".esimene").select("p").text("tere"); // muudab valitud elemendi sisu
+    var uus_element = d3.select("body").append("div").append("h1").text("Tere!") // loob uue elemendi
+    var eemalda_element = d3.select(".teine").select("p").remove() // elemendi eemaldamine
+</script>
+</html>

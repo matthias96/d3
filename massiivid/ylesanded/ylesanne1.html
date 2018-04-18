@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+<body>
+
+    <script>
+        var array = [1,15,57,100];
+        var array2= [100,10,45,9];
+
+        var merge = d3.merge([array, array2]);
+        
+        var summa = d3.sum(merge);
+        console.log(summa);
+
+        var keskmine = d3.mean(merge);
+        console.log(keskmine);
+        
+       
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+<body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        var width = 400;  // svg laius
+        var height = 400;   // svg pikkus
+        
+        var svg = d3.select("body")         // luuakse svg element body sisse 
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .style("border-style", "solid");  
+// näidata svg pikkus ja laiust visuaalselt
+
+        svg.append("line")                          
+// svg elemendile lisatakse joone element
+           .attr("x1", 100)                         // algus x koordinaat
+           .attr("x2", 250)                         // lõpu x koordinaat
+           .attr("y1", 60)                          // algus y koordinaat
+           .attr("y2", 150)                        // lõpu y koordinaat
+           .attr("stroke", "red")                 // joone värvus
+    </script>
+    </body>
+</html>
